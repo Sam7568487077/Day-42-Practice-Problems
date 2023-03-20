@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="TextForm.css">
+</head>
+<body>
+    
+    <form >
+        <header class="headerContainer"> HTML input field </header>
+
+        <div>
+            <label for="name">Enter your name</label>
+            <input id="name" type="text" name="uname" required>
+            <error-output class ="name-error" for = "name"></error-output>
+        </div>
+
+        <div>
+            <label for="passw">Enter your password</label>
+            <input id="passw" type="password" name="passw">
+            <error-output class ="pass-error" for = "passw"></error-output>
+        </div>
+
+        <div>
+            <label for="email">Enter your email</label>
+            <input id="email" type="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="url">Enter url</label>
+            <input id="url" type="url" name="url">
+        </div>
+
+        <div>
+            <label for="num">Enter your favourite number</label>
+            <input id="num" type="number" name="num">
+        </div>
+
+        <div>
+            <label for="telp">Enter your telephone numer</label>
+            <input id="telp" type="tel" name="telp">
+            <error-output class ="tel-error" for = "telp"></error-output>
+        </div>
+
+        <div>
+            <label for="sch">Enter what you want to search</label>
+            <input id="sch" type="search" name="sch">
+        </div>
+
+        <div>
+            <label for="dat">Enter date and time</label>
+            <input id="dat" type="datetime-local" name="dat">
+        </div>
+
+        <div>
+            <label for="sal">Enter your salary</label>
+            <input id="sal" type="range" min="10000" max="100000" step="100" value="30000" name="sal">
+            <output class="sal-output " for="sal">400000</output> 
+        </div>
+
+        <div>
+            <button>Submit</button>
+        </div>
+        
+    </form>
+
+    <script>
+
+        //for regix pattern name
+        const fname= document.querySelector('#name');
+        const texterror = document.querySelector('.name-error');
+        fname.addEventListener('input',function()
+        { let regName = RegExp('[A-Z]{1}[a-z]{2,}$');
+        if(regName.test(fname.value))
+        texterror.textContent = "";
+        else
+        texterror.textContent = "Name not in right format";
+
+ });
+
+ //for regix pass
+         const fpass= document.querySelector('#passw');
+        const passwerror = document.querySelector('.pass-error');
+        fpass.addEventListener('input',function()
+        {
+            let regName2 = RegExp('[a-zA-Z]{1}[a-zA-z0-9!@*_]{8,}$');
+            if(regName2.test(fpass.value))
+            passwerror.textContent = "";
+        else
+        passwerror.textContent = "TPassword not in right format";
+        });
+
+        //for regix phonenumber
+        const ftep= document.querySelector('#telp');
+        const telperror = document.querySelector('.tel-error');
+        ftep.addEventListener('input',function()
+        {
+            let regName3 = RegExp('[91]{2}[0-9]{10}');
+            if(regName3.test(ftep.value))
+           telperror.textContent = "";
+        else
+        telperror.textContent = "Mobile No. not in right format";
+        });
+
+
+         // for slider salary increment setting
+        const sal = document.querySelector('#sal');
+        const output = document.querySelector('.sal-output');
+        output.textContent = sal.value;
+        // for incrementing ebery time
+        sal.addEventListener('input',function()
+        {
+            output.textContent = sal.value;
+        });
+
+
+
+    </script>
+</body>
+</html>
